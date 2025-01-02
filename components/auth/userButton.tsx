@@ -27,7 +27,7 @@ export const UserButton = ()=>{
         <DropdownMenuContent className="w-40" align="end">
             <LogoutButton>
                 <DropdownMenuItem>
-                    <ExitIcon className="h-4 w-4 mr-2"></ExitIcon>
+                    <ExitIcon className="h-4 w-4 mr-2 text-destructive"></ExitIcon>
                     Logout
                 </DropdownMenuItem>
             </LogoutButton>
