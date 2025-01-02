@@ -13,7 +13,7 @@ export function LogoutButton({children}:LogoutButtonProps){
     function OnClick(){
         signOut()
     }
-    return <Button onClick={OnClick} variant="destructive">
+    return <span onClick={OnClick}>
         {children}
-    </Button>
+    </span>
 }

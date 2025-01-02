@@ -1,5 +1,6 @@
 "use client"
 
+import { UserButton } from "@/components/auth/userButton"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
@@ -12,8 +13,8 @@ export function NavBar(){
             <Button variant={pathanme === "/settings"?"default":"outline"} asChild><Link href="/settings">Settings</Link></Button>
             <Button variant={pathanme === "/admin"?"default":"outline"} asChild><Link href="/admin">Admin</Link></Button>
         </div>
-        <p>
-            user button
-        </p>
+        <UserButton>
+            
+        </UserButton>
     </div>
 }
