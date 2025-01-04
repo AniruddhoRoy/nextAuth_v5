@@ -9,10 +9,16 @@ import {NewPasswordSchema} from "@/schemas"
 import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
-import { useState, useTransition } from "react";
+import { Suspense, useState, useTransition } from "react";
 import { NewPassword } from "@/actions/new-password";
 import { useSearchParams } from "next/navigation";
 export function NewPasswordForm(){
+    return <Suspense>
+    <NewPasswordForm1></NewPasswordForm1>
+  </Suspense>
+}
+
+export function NewPasswordForm1(){
     const searchParams = useSearchParams()
     const token = searchParams.get("token")
     const [isPending,startTransition] = useTransition();

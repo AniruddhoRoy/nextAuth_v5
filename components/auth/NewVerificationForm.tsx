@@ -2,11 +2,17 @@
 import { useSearchParams } from "next/navigation"
 import { CardWrapper } from "./CardWrapper"
 import {RiseLoader} from "react-spinners"
-import { useCallback, useEffect, useState } from "react"
+import { Suspense, useCallback, useEffect, useState } from "react"
 import { NewVerification } from "@/actions/new-verification"
 import { FormError } from "../form-error"
 import { FormSuccess } from "../form-success"
-export const NewVerificationForm = ()=>{
+export function NewVerificationForm(){
+    return <Suspense>
+    <NewVerificationForm1 />
+  </Suspense>
+}
+
+export const NewVerificationForm1 = ()=>{
     const [error,setError] = useState<string|undefined>("")
     const [success,setSuccess] = useState<string|undefined>("")
     const searchParams = useSearchParams()

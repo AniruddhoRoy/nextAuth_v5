@@ -10,10 +10,15 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { login } from "@/actions/login";
-import { useState, useTransition } from "react";
+import { Suspense, useState, useTransition } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-export function LoginForm(){
+export function LoginForm (){
+     return <Suspense>
+        <LoginForm1></LoginForm1>
+     </Suspense>
+}
+export function LoginForm1(){
     const searchParams = useSearchParams();
     const urlError = searchParams.get("error")==="OAuthAccountNotLinked"?"Email already in used with different provider":"";
 

@@ -4,7 +4,6 @@ import { adminFunction } from "@/actions/admin"
 import { RoleGate } from "@/components/auth/role_gate"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { UseCurrentRole } from "@/hooks/useCurrentRole"
 import { UserRole } from "@prisma/client"
 import { toast } from "sonner"
 
