@@ -5,6 +5,7 @@ import authConfig from "./auth.config"
 import { getUserById } from "./data/user"
 import { UserRole } from "@prisma/client"
 import { getTwofactorConfirmationByUserId } from "./data/two_factor_confirmation"
+import { getAccountByUserId } from "./data/account"
 export const { handlers, signIn, signOut, auth } = NextAuth({
   pages:{
     signIn:"/auth/login",
@@ -69,6 +70,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
        session.user.isTwoFactorEnable = token.isTwoFactorEnable as boolean
       //  console.log(session.user)
       }
+      if(session.user && token.email){
+       
+        session.user.name = token.name
+        session.user.email = token.email
+        session.user.isOAuth = token.isOAuth as boolean
+      }
       return session
     },
     async jwt({token}){
@@ -76,8 +83,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       {
         const user = await getUserById(token.sub)
         if(user){
+          const existingAccout = await getAccountByUserId(user.id)
+          
+          token.isOAuth = !!existingAccout
           token.role = user.role,
           token.isTwoFactorEnable = user.isTwoFactorEnable
+          token.name = user.name
+          token.email = user.email
         }
       }
       // console.log(token)
